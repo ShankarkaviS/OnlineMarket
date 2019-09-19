@@ -21,11 +21,10 @@ public class MarketingController {
 	@Autowired
 	StockService StockService; 
 	
-	@PutMapping("/buyStock/{id}")
-	public ResponseEntity<StockResponseDto> getStock(@PathVariable("id") Long stockId,@RequestBody StockRequestDto stock )
+	@PutMapping("/buyStock")
+	public StockResponseDto getStock(@RequestBody StockRequestDto stock )
 	{
-		return new ResponseEntity<>(StockService.findByNameAndQuantity(stock.getStockId(), stock.getQuantity()),HttpStatus.OK);
-
+		return StockService.findByNameAndQuantity(stock.getStockId(), stock.getQuantity());
 	}
 	
 	@GetMapping("/getStock/{id}")
